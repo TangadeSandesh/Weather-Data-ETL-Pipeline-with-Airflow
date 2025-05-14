@@ -20,11 +20,9 @@ dag = DAG(
     description='Our first DAG with ETL process!',
     schedule=timedelta(days=1),  # fixed key: should be `schedule_interval`
 )
-
 run_etl = PythonOperator(
     task_id='complete_openWeather_etl',
     python_callable=run_openweather_etl,
     dag=dag, 
 )
-
 run_etl
