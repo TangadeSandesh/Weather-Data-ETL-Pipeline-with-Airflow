@@ -1,9 +1,7 @@
-from datetime import timedelta
+from datetime import timedelta, datetime
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.utils.dates import days_ago
-from datetime import datetime
-from twitter_etl import run_twitter_etl
+from weather_etl import run_openweather_etl
 
 default_args = {
     'owner': 'airflow',
@@ -17,15 +15,15 @@ default_args = {
 }
 
 dag = DAG(
-    'twitter_dag',
+    'weather_dag',
     default_args=default_args,
     description='Our first DAG with ETL process!',
-    schedule=timedelta(days=1),
+    schedule=timedelta(days=1),  # fixed key: should be `schedule_interval`
 )
 
 run_etl = PythonOperator(
-    task_id='complete_twitter_etl',
-    python_callable=run_twitter_etl,
+    task_id='complete_openWeather_etl',
+    python_callable=run_openweather_etl,
     dag=dag, 
 )
 
