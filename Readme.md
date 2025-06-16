@@ -2,6 +2,9 @@
 
 A data pipeline that extracts data from thee openweathermap API, transforms the data into a structured format, and loads it into Amazon S3.
 
+# Architechture of the ETL pipeline
+<img src="Weather ETL Pipeline.png" width="128"/>
+
 ## Overview
 
 This project uses Apache Airflow to schedule and run a daily ETL (Extract, Transform, Load) pipeline that:
